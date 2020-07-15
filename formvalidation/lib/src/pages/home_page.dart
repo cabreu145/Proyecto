@@ -7,7 +7,9 @@ class HomePage extends StatelessWidget {
     final bloc = Provider.of(context);
 
     return Scaffold(
-      appBar: AppBar(title: Text('Home')),
+      appBar: AppBar(
+        title: Text('Home'),
+      ),
       body: Container(),
       floatingActionButton: _crearBoton(context),
     );

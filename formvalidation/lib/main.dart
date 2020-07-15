@@ -19,7 +19,11 @@ class MyApp extends StatelessWidget {
         'home': (BuildContext context) => HomePage(),
         'producto': (BuildContext context) => ProductoPage(),
       },
-      theme: ThemeData(primaryColor: Color(4284207170)),
+      theme: ThemeData(
+          primaryColor: Color(4284207170),
+          primaryTextTheme: Theme.of(context)
+              .primaryTextTheme
+              .apply(bodyColor: Colors.white)),
     ));
   }
 }
