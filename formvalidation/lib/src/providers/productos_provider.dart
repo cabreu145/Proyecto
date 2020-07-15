@@ -18,6 +18,18 @@ class ProductosProvider {
     return true;
   }
 
+  Future<bool> editarProducto(ProductoModel producto) async {
+    final url = '$_url/productos/${producto.id}.json'; //Put
+
+    final resp = await http.put(url, body: productoModelToJson(producto));
+
+    final decodedData = json.decode(resp.body);
+
+    print(decodedData);
+
+    return true;
+  }
+
   Future<List<ProductoModel>> cargarProductos() async {
     final url = '$_url/productos.json'; //Get
 
@@ -40,4 +52,34 @@ class ProductosProvider {
     // print(productos[0].id);
     return productos;
   }
+
+  Future<int> borrarProducto(String id) async {
+    final url = '$_url/productos/$id.json';
+    final resp = await http.delete(url);
+
+    print(resp.body);
+
+    return 1; //significa ya se hizo
+  }
 }
+
+// File photo;
+
+//   @override
+//   Widget build(BuildContext context) {...}
+
+//   _processImage(ImageSource origin) async {
+//     final _picker = ImagePicker();
+
+//     final pickedFile = await _picker.getImage(
+//       source: origin,
+//     );
+
+//     photo = File(pickedFile.path);
+
+//     if (photo != null) {
+//       product.urlImg = null;
+//     }
+
+//     setState(() {});
+//   }
