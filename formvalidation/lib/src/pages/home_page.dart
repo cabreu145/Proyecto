@@ -10,9 +10,7 @@ class HomePage extends StatelessWidget {
     productosBloc.cargarProductos();
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Home'),
-      ),
+      appBar: AppBar(title: Text('Home')),
       body: _crearListado(productosBloc),
       floatingActionButton: _crearBoton(context),
     );
@@ -25,10 +23,11 @@ class HomePage extends StatelessWidget {
           (BuildContext context, AsyncSnapshot<List<ProductoModel>> snapshot) {
         if (snapshot.hasData) {
           final productos = snapshot.data;
+
           return ListView.builder(
             itemCount: productos.length,
-            itemBuilder: (context, i) => _crearItem(context, productosBloc,
-                productos[i]), //Instancia del producto model
+            itemBuilder: (context, i) =>
+                _crearItem(context, productosBloc, productos[i]),
           );
         } else {
           return Center(child: CircularProgressIndicator());
@@ -53,7 +52,7 @@ class HomePage extends StatelessWidget {
                   : FadeInImage(
                       image: NetworkImage(producto.fotoUrl),
                       placeholder: AssetImage('assets/jar-loading.gif'),
-                      height: 250.0,
+                      height: 300.0,
                       width: double.infinity,
                       fit: BoxFit.cover,
                     ),
@@ -71,7 +70,7 @@ class HomePage extends StatelessWidget {
   _crearBoton(BuildContext context) {
     return FloatingActionButton(
       child: Icon(Icons.add),
-      backgroundColor: Color.fromRGBO(91, 208, 66, 1.0),
+      backgroundColor: Colors.deepPurple,
       onPressed: () => Navigator.pushNamed(context, 'producto'),
     );
   }

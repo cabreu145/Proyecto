@@ -55,8 +55,6 @@ class ProductosProvider {
       productos.add(prodTemp);
     });
 
-    // print( productos[0].id );
-
     return productos;
   }
 
